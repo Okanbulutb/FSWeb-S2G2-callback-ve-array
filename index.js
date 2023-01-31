@@ -7,15 +7,38 @@ const { fifaData } = require('./fifa.js')
 	💡 İPUCU: Öncelikle datayı filtrelemek isteyebilirsiniz */
 
 //(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
-
+let filterHomeName = fifaData.filter((homeName)=>{
+	return homeName.Year >= 2014 && homeName.Stage === "Final";
+});
+const mapHomeName = filterHomeName.map((homeNames) => {
+	return {HomeTeamName:homeNames['Home Team Name']};
+});
+console.log(mapHomeName);
 //(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
-
+let filterAwayName = fifaData.filter((homeName)=>{
+	return homeName.Year >= 2014 && homeName.Stage === "Final";
+});
+const mapAwayName = filterAwayName.map((awayNames) => {
+	return {AwayTeamName:awayNames['Away Team Name']};
+});
+console.log(mapAwayName);
 //(c) 2014 Dünya kupası finali Ev sahibi takım golleri (dizide "Home Team Goals" anahtarı)
-
+let filterHomeGoal = fifaData.filter((homeName)=>{
+	return homeName.Year >= 2014 && homeName.Stage === "Final";
+});
+const mapHomeGoal = filterHomeGoal.map((HomeGoals) => {
+	return {HomeGoals:HomeGoals['Home Team Goals']};
+});
+console.log(mapHomeGoal);
 //(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
-
+let filterAwayGoal = fifaData.filter((homeName)=>{
+	return homeName.Year >= 2014 && homeName.Stage === "Final";
+});
+const mapAwayGoal = filterAwayGoal.map((HomeGoals) => {
+	return {AwayGoals:HomeGoals['Away Team Goals']};
+});
+console.log(mapAwayGoal);
 //(e) 2014 Dünya kupası finali kazananı*/
-
 
 /*  Görev 2: 
 	Finaller adlı fonksiyonu kullanarak aşağıdakileri uygulayın:
@@ -25,12 +48,15 @@ const { fifaData } = require('./fifa.js')
 	💡 İPUCU - verilen data içindeki nesnelerin(objects) "Stage" anahtarına bakmalısınız
 */
 
-function Finaller(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
+function Finaller() {
+	let filterFinal = fifaData.filter((Final) =>{
+		return Final.Stage === "Final";
+	});
+	let newFinals = [];
+	newFinals = filterFinal;
+	return newFinals;
 }
-
-
+console.log(Finaller());
 
 /*  Görev 3: 
 	Bir higher-order fonksiyonu olan Yillar isimli fonksiyona aşağıdakileri uygulayın: 
@@ -38,12 +64,16 @@ function Finaller(/* kodlar buraya */) {
 	2. Görev 2'de yazdığınız Finaller fonksiyonunu, geriçağırım(callback) olarak fonksiyonun ikinci parametresi olarak alacak
 	3. Finaller data setindeki tüm yılları içeren "years" adındaki diziyi(array) döndürecek
 	*/
-
-function Yillar(/* kodlar buraya */) {
 	
-    /* kodlar buraya */
+	
+function Yillar() {
+   let finals = Finaller();
+   const mapFinals = finals.map((Years)=>{
+	return {Year: Years.Year}
+});
+console.log(mapFinals);
 }
-
+console.log(Yillar());
 
 /*  Görev 4: 
 	Bir higher-order fonksiyonunu olan Kazananlar isimli fonksiyona aşağıdakileri uygulayın:  
@@ -53,8 +83,8 @@ function Yillar(/* kodlar buraya */) {
 	💡 İPUCU: Beraberlikler(ties) için şimdilik endişelenmeyin (Detaylı bilgi için README dosyasına bakabilirsiniz.)
 	4. Tüm kazanan ülkelerin isimlerini içeren `kazananlar` adında bir dizi(array) döndürecek(return)  */ 
 
-function Kazananlar(/* kodlar buraya */) {
-	
+function Kazananlar() {
+
     /* kodlar buraya */
 	
 }
